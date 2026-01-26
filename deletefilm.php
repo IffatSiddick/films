@@ -8,9 +8,10 @@ try{
     $films_table->delete('id', $_POST['id']); 
     
     header('location: films.php');
-}catch(PDOException $e){
-$title = 'An error has occured';
-$output = 'Unable to connect to delete film: ' .$e->getMessage();
 }
-include 'templates/layout.html.php';
+catch (PDOException $e) {
+    $title = 'An error has occured';
+    $output = 'Unable to connect to delete film: ' .$e->getMessage();
+}
+include 'templates/layout-old.html.php';
 

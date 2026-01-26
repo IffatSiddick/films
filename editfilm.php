@@ -8,6 +8,7 @@
 
         if (isset($_POST['film'])){
             $film = $_POST['film'];
+            $joke['date'] = date('Y-m-d');
             $film['reviewer_id'] =1;
 
             $films_table->save($film); 
@@ -32,4 +33,4 @@
         $title = 'An error has occured';
         $output= 'Database error: ' . $e->getMessage();
 }
-include 'templates/layout.html.php';
+include 'templates/layout-old.html.php';

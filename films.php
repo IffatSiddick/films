@@ -17,12 +17,13 @@ try{
             'title' => $film['title'],
             'date' => $film['date'],
             'review' => $film['review'],
+            'reviewer' => $reviewer['name'],
             'email' => $reviewer['email']
         ];
     }
     
     $title = 'film list';
-    $totalFilms = $films_tabl->total($pdo, 'film');
+    $totalFilms = $films_table->total($pdo, 'film');
 
     ob_start();
     include 'templates/films.html.php';
@@ -32,4 +33,4 @@ catch (PDOException $e) {
     $title = 'An error has occured';
     $output= 'Database error: ' . $e->getMessage();
 }
-include 'templates/layout.html.php';
+include 'templates/layout-old.html.php';

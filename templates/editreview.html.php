@@ -1,6 +1,7 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Leave a new film review below</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
+    
     <form action="" method="post">
         <input type="hidden" name="film[id]" value="<?=$film['id'] ?? ''?>">
         <div class="w3-section">

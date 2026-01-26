@@ -13,11 +13,11 @@ class FilmController {
     
         $films = [];
         foreach($result as $film){
-            $reviewer = $this->ReviewerTable->find('id', $film['reviewerid'])[0];
+            $reviewer = $this->ReviewerTable->find('id', $film['reviewer_id'])[0];
 
             $films[] = [
                 'id' => $film['id'], 
-                'filmtext' => $film['filmtext'],
+                'review' => $film['review'],
                 'date' => $film['date'],
                 'name' => $reviewer['name'],
                 'email' => $reviewer['email']
