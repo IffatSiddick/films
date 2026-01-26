@@ -15,6 +15,6 @@ foreach($films as $film): ?>
                         <input type="submit" value="Delete">
                 </form>
         </blockquote>
-<?php endforeach;?>]
+<?php endforeach;?>
 
         

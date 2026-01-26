@@ -19,4 +19,4 @@ catch (PDOException $e) {
     $title = 'An error has occured';
     $output= 'Database error: ' . $e->getMessage();
 }
-include 'templates/layout-old.html.php';
+include 'templates/layout.html.php';

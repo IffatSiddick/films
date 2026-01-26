@@ -10,7 +10,7 @@ try{
     $films = [];
 
     foreach($result as $film){
-        $reviewer = $reviewer_table->find($pdo, 'reviewer', 'id', $film['reviewer_id'])[0];
+        $reviewer = $reviewer_table->find('id', $film['reviewer_id'])[0];
 
         $films[] = [
             'id' => $film['id'], 
@@ -33,4 +33,4 @@ catch (PDOException $e) {
     $title = 'An error has occured';
     $output= 'Database error: ' . $e->getMessage();
 }
-include 'templates/layout-old.html.php';
+include 'templates/layout.html.php';
