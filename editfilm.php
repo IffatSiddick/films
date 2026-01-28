@@ -8,7 +8,7 @@
 
         if (isset($_POST['film'])){
             $film = $_POST['film'];
-            $joke['date'] = date('Y-m-d');
+            $film['date'] = date('Y-m-d');
             $film['reviewer_id'] =1;
 
             $films_table->save($film); 

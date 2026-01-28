@@ -26,11 +26,13 @@ class FilmController {
         $title = 'Film list';
         $totalFilms = $this->FilmTable->total();
 
-        ob_start();
-        include 'templates/films.html.php';
-        $output = ob_get_clean();
-
-        return ['output' => $output, 'title'=>$title];
+        return ['template' => 'films.html.php', 
+                'title'=> $title,
+                'variables' => [
+                    'totalFilms' => $totalFilms,
+                    'films' => $films
+                    ]
+                ];
     }
 
     public function home() {
@@ -39,12 +41,12 @@ class FilmController {
         include 'templates/home.html.php';
         $output = ob_get_clean();
 
-        return ['output' => $output, 'title'=>$title];
+        return ['template' => 'home.html.php', 'title'=>$title];
     }
 
     public function delete() {
         $this->FilmTable->delete('id', $_POST['id']);  
-        header('location: index.php?action=list');
+        header('location: index.php?controller=film&action=list');
     }
 
     public function edit() {
@@ -55,7 +57,7 @@ class FilmController {
 
             $this->FilmTable->save($film); 
 
-            header('location: index.php?action=list');
+            header('location: index.php?controller=film&action=list');
         } 
         else {
             if (isset($_GET['id'])) {
@@ -66,11 +68,10 @@ class FilmController {
             }
             $title = 'Edit Film';
 
-            ob_start();
-            include 'templates/editreview.html.php';
-            $output = ob_get_clean();
+            return ['template' => 'editreview.html.php',
+                'title'=>$title,
+                'variables' => ['film' => $film]
+            ];
         }
-
-        return ['output' => $output, 'title'=>$title];
     }
 }
