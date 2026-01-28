@@ -17,6 +17,7 @@ class FilmController {
 
             $films[] = [
                 'id' => $film['id'], 
+                'title' => $film['title'],
                 'review' => $film['review'],
                 'date' => $film['date'],
                 'name' => $reviewer['name'],
