@@ -26,6 +26,7 @@
     <a href="index.php?controller=film&amp;action=list"  class="w3-bar-item w3-button w3-hover-white">Review list</a> 
     <a href="index.php?controller=film&amp;action=edit"  class="w3-bar-item w3-button w3-hover-white">Add a new review</a> 
     <a href="index.php?controller=reviewer&amp;action=registrationform"  class="w3-bar-item w3-button w3-hover-white">Register</a> 
+    <a href="index.php?controller=login&amp;action=login" class="w3-bar-item w3-button w3-hover-white">Log in</a>
   </div>
 </nav>
 <!-- !PAGE CONTENT! -->

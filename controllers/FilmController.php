@@ -3,7 +3,9 @@ class FilmController {
     private DatabaseTable $FilmTable;
     private DatabaseTable $ReviewerTable;
 
-    public function __construct(DatabaseTable $FilmTable, DatabaseTable $ReviewerTable) {
+    public function __construct(DatabaseTable $FilmTable, 
+    DatabaseTable $ReviewerTable,
+    private Authentication $authentication) {
         $this->FilmTable = $FilmTable;
         $this->ReviewerTable = $ReviewerTable;
     }
@@ -51,28 +53,34 @@ class FilmController {
     }
 
     public function edit() {
-        if (isset($_POST['film'])){
-            $film = $_POST['film'];
-            $film['date'] = date('Y-m-d');
-            $film['reviewer_id'] =1;
-
-            $this->FilmTable->save($film); 
-
-            header('location: index.php?controller=film&action=list');
-        } 
+        if (!$this->authentication->isLoggedIn()) {
+            return ['template' => 'error.html.php', 
+            'title'=>'You are not authorised to use this page.'];
+        }
         else {
-            if (isset($_GET['id'])) {
-                $film = $this->FilmTable->find('id', $_GET['id'])[0] ?? null;
-            }
-            else {
-                $film = null;
-            }
-            $title = 'Edit Film';
+            if (isset($_POST['film'])){
+                $film = $_POST['film'];
+                $film['date'] = date('Y-m-d');
+                $film['reviewer_id'] =1;
 
-            return ['template' => 'editreview.html.php',
-                'title'=>$title,
-                'variables' => ['film' => $film]
-            ];
+                $this->FilmTable->save($film); 
+
+                header('location: index.php?controller=film&action=list');
+            } 
+            else {
+                if (isset($_GET['id'])) {
+                    $film = $this->FilmTable->find('id', $_GET['id'])[0] ?? null;
+                }
+                else {
+                    $film = null;
+                }
+                $title = 'Edit Film';
+
+                return ['template' => 'editreview.html.php',
+                    'title'=>$title,
+                    'variables' => ['film' => $film]
+                ];
+            }
         }
     }
 }
