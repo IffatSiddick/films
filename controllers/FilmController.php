@@ -12,20 +12,28 @@ class FilmController {
 
     public function list() {
         $result = $this->FilmTable->findAll();
-    
-        $films = [];
-        foreach($result as $film){
-            $reviewer = $this->ReviewerTable->find('id', $film['reviewer_id'])[0];
 
-            $films[] = [
-                'id' => $film['id'], 
-                'title' => $film['title'],
-                'review' => $film['review'],
-                'date' => $film['date'],
-                'name' => $reviewer['name'],
-                'email' => $reviewer['email']
-            ];
+        $search = $_GET['search'] ?? '';
+
+        if (!empty($search)) {
+            $films = $this->FilmTable->searchRecipes($search);
+        } 
+        else {
+            $films = [];
+            foreach($result as $film){
+                $reviewer = $this->ReviewerTable->find('id', $film['reviewer_id'])[0];
+
+                $films[] = [
+                    'id' => $film['id'], 
+                    'title' => $film['title'],
+                    'review' => $film['review'],
+                    'date' => $film['date'],
+                    'name' => $reviewer['name'],
+                    'email' => $reviewer['email']
+                ];
+            }
         }
+    
         $title = 'Film list';
         $totalFilms = $this->FilmTable->total();
 
@@ -33,6 +41,7 @@ class FilmController {
                 'title'=> $title,
                 'variables' => [
                     'totalFilms' => $totalFilms,
+                    'search' => $search,
                     'films' => $films
                     ]
                 ];

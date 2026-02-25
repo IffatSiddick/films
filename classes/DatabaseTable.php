@@ -102,4 +102,19 @@ class DatabaseTable {
         }
     }
 
+    function searchRecipes(string $search): array {
+        $sql = '
+            SELECT film.id, film.title, film.review, film.date, reviewer_id, reviewer.name, reviewer.email
+            FROM film
+            INNER JOIN reviewer ON film.reviewer_id = reviewer.id
+            WHERE film.title LIKE :term
+            OR reviewer.name LIKE :term
+            ORDER BY film.date DESC
+        ';
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['term' => '%' . $search . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

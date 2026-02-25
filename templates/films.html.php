@@ -1,4 +1,21 @@
 <p><?=$totalFilms?> film reviews have been submitted</p>
+<form method="get" class="search-bar">
+        <input type="hidden" name="controller" value="film">
+        <input type="hidden" name="action" value="list">
+
+        <input type="text" name="search" placeholder="Search by film or reveiwer"
+                value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8') ?>">
+        <button type="submit">Search</button>
+
+        <?php if ($films == []): ?>
+                <p>There are no films or reviewers that match your search.</p>
+        <?php endif; ?>
+
+        <?php if (!empty($search)): ?>
+                <a class="clear-link" href="index.php?controller=film&amp;action=list">Clear</a>
+        <?php endif; ?>
+</form>
+
 <?php
 foreach($films as $film): ?>
         <blockquote>
