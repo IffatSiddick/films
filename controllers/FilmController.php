@@ -19,14 +19,15 @@ class FilmController {
         $search = $_GET['search'] ?? '';
 
         $pagination = new Pagination($pdo, 'film', 10);
-        $films = $pagination->get_data();
+        $result = $pagination->get_data();
+        $pages  = $pagination->get_pagination_numbers();
 
         if (!empty($search)) {
             $films = $this->FilmTable->searchRecipes($search);
         } 
         else {
-            #$films = [];
-            foreach($films as $film){
+            $films = [];
+            foreach($result as $film){
                 $reviewer = $this->ReviewerTable->find('id', $film['reviewer_id'])[0];
 
                 $films[] = [
@@ -36,6 +37,7 @@ class FilmController {
                     'date' => $film['date'],
                     'name' => $reviewer['name'],
                     'email' => $reviewer['email']
+                    #$user->email
                 ];
             }
         }
@@ -48,8 +50,8 @@ class FilmController {
                 'variables' => [
                     'totalFilms' => $totalFilms,
                     'search' => $search,
-                    'limit' => $limit,
-                    'films' => $films
+                    'films' => $films,
+                    'pages' => $pages
                     ]
                 ];
     }

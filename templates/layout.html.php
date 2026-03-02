@@ -29,18 +29,20 @@
     <a href="index.php?controller=login&amp;action=login" class="w3-bar-item w3-button w3-hover-white">Log in</a>
   </div>
 </nav>
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
   <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="showcase">
+  <div class="w3-container" style="margin-top:60px" id="showcase">
     <h1>Internet film reviews</h1>
   </div>
-  <div class="w3-container" id="services" style="margin-top:75px">
+  <div class="w3-container" id="services" style="margin-top:50px">
       <p><?=$output?></p>
   </div>
 </div>
+
 <!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+<!-- <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div> -->
 
 </body>
 </html>

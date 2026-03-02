@@ -34,10 +34,10 @@
         }
         $stmt = $this->pdo->prepare("SELECT * FROM $this->table LIMIT $start, $this->limit");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll();
     }
 
-    public function get_pagination_number(){
+    public function get_pagination_numbers(){
         return ceil($this->total_records / $this->limit);
     }
 }
