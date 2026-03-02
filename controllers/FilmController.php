@@ -11,16 +11,22 @@ class FilmController {
     }
 
     public function list() {
-        $result = $this->FilmTable->findAll();
+        include 'includes/DatabaseConnection.php';
+        include 'classes/Pagination.php';
+
+        #$result = $this->FilmTable->findAll();
 
         $search = $_GET['search'] ?? '';
+
+        $pagination = new Pagination($pdo, 'film', 10);
+        $films = $pagination->get_data();
 
         if (!empty($search)) {
             $films = $this->FilmTable->searchRecipes($search);
         } 
         else {
-            $films = [];
-            foreach($result as $film){
+            #$films = [];
+            foreach($films as $film){
                 $reviewer = $this->ReviewerTable->find('id', $film['reviewer_id'])[0];
 
                 $films[] = [
@@ -42,6 +48,7 @@ class FilmController {
                 'variables' => [
                     'totalFilms' => $totalFilms,
                     'search' => $search,
+                    'limit' => $limit,
                     'films' => $films
                     ]
                 ];

@@ -25,6 +25,12 @@ class DatabaseTable {
         return $stmt->fetchALL();
     }
 
+    public function findByN($start_from, $limit) {   
+        $stmt = $this->pdo->prepare('SELECT * FROM `film` LIMIT $start_from, $limit');  
+        $stmt->execute();
+        return $stmt->fetchALL();
+    }
+
     public function delete($field, $value) {
         $stmt = $this->pdo->prepare('DELETE FROM `' . $this->table . '` WHERE `' . $field .'` = :value');
         $values = [':value' => $value];
@@ -48,7 +54,7 @@ class DatabaseTable {
         $query = rtrim($query, ',');
         $query .= ')';
         $stmt = $this->pdo->prepare($query);
-            $stmt->execute($values);
+        $stmt->execute($values);
     }
 
     private function update($values) {

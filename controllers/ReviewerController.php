@@ -44,6 +44,11 @@ class ReviewerController {
         if (empty($errors)) {
             $reviewer['password'] = password_hash($password, PASSWORD_DEFAULT);;
             $this->reviewerTable->save($reviewer);
+
+            $passwordColumn = 'password';
+            $_SESSION['username'] = $reviewer['name'];
+            $_SESSION['password'] = $user[0][$this->passwordColumn];
+
             header('location: index.php?controller=reviewer&action=success');
         }
         else {
