@@ -11,8 +11,10 @@ class Login {
         $success = $this->authentication->login($_POST['email'], $_POST['password']);
     
         if ($success) {
+            $reviewer = $this->authentication->getUser();
             return ['template' => 'loginSuccess.html.php',
-            'title' => 'Login successful'];
+            'title' => 'Login successful',
+            'variables' => ['reviewer' => $reviewer[0]['name']]];
         }
         else {
             return ['template' => 'login.html.php',
@@ -24,7 +26,7 @@ class Login {
 
     public function logout() {
         $this->authentication->logout();
-        header('location: /');
+        header('location: index.php');
     }
 }
 ?>

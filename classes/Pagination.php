@@ -27,6 +27,28 @@
         }
     }
 
+    public function next_page(){
+        if ($this->current_page() < $this->get_pagination_number()) {
+            return ($this->current_page() + 1);
+        }
+        else {
+            return ($this->get_pagination_number());
+        }
+    }
+
+    public function prev_page(){
+        if ($this->current_page() > 1) {
+            return ($this->current_page() - 1);
+        }
+        else {
+            return 1;
+        }
+    }
+
+    public function is_active_class($page){
+        return ($page == $this->current_page()) ? 'active' : '';
+    }
+
     public function get_data(){
         $start = 0;
         if($this->current_page() > 1){
@@ -37,8 +59,8 @@
         return $stmt->fetchAll();
     }
 
-    public function get_pagination_numbers(){
-        return ceil($this->total_records / $this->limit);
+    public function get_pagination_number(){
+        return max(1, ceil($this->total_records / $this->limit));
     }
 }
 ?>

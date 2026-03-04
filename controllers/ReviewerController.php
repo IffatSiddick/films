@@ -42,7 +42,7 @@ class ReviewerController {
         }
 
         if (empty($errors)) {
-            $reviewer['password'] = password_hash($password, PASSWORD_DEFAULT);;
+            $reviewer['password'] = password_hash($reviewer['password'], PASSWORD_DEFAULT);;
             $this->reviewerTable->save($reviewer);
 
             $passwordColumn = 'password';

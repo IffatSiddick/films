@@ -14,13 +14,11 @@ class FilmController {
         include 'includes/DatabaseConnection.php';
         include 'classes/Pagination.php';
 
-        #$result = $this->FilmTable->findAll();
-
         $search = $_GET['search'] ?? '';
 
-        $pagination = new Pagination($pdo, 'film', 10);
+        $pagination = new Pagination($pdo, 'film', 5);
         $result = $pagination->get_data();
-        $pages  = $pagination->get_pagination_numbers();
+        $pages  = $pagination->get_pagination_number();
 
         if (!empty($search)) {
             $films = $this->FilmTable->searchRecipes($search);
@@ -36,8 +34,8 @@ class FilmController {
                     'review' => $film['review'],
                     'date' => $film['date'],
                     'name' => $reviewer['name'],
-                    'email' => $reviewer['email']
-                    #$user->email
+                    'email' => $reviewer['email'],
+                    'reviewer' => $reviewer['id']
                 ];
             }
         }
@@ -45,13 +43,17 @@ class FilmController {
         $title = 'Film list';
         $totalFilms = $this->FilmTable->total();
 
+        $user = $this->authentication->getUser();
+
         return ['template' => 'films.html.php', 
                 'title'=> $title,
                 'variables' => [
                     'totalFilms' => $totalFilms,
                     'search' => $search,
+                    'pagination' => $pagination,
                     'films' => $films,
-                    'pages' => $pages
+                    'pages' => $pages,
+                    'userID' => $user['id'] ?? null
                     ]
                 ];
     }
@@ -79,7 +81,7 @@ class FilmController {
             if (isset($_POST['film'])){
                 $film = $_POST['film'];
                 $film['date'] = date('Y-m-d');
-                $film['reviewer_id'] =1;
+                $joke['reviewerId'] = $reviewer['id'];
 
                 $this->FilmTable->save($film); 
 
@@ -92,11 +94,17 @@ class FilmController {
                 else {
                     $film = null;
                 }
+
                 $title = 'Edit Film';
+                $user = $this->authentication->getUser();
 
                 return ['template' => 'editreview.html.php',
                     'title'=>$title,
-                    'variables' => ['film' => $film]
+                    'variables' => [
+                        'film' => $film,
+                        'userID' => $user['id'] ?? null,
+                        'reviewerID' => $film['reviewer_id'] ?? null
+                    ]
                 ];
             }
         }

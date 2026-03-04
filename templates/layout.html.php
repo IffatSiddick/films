@@ -26,7 +26,12 @@
     <a href="index.php?controller=film&amp;action=list"  class="w3-bar-item w3-button w3-hover-white">Review list</a> 
     <a href="index.php?controller=film&amp;action=edit"  class="w3-bar-item w3-button w3-hover-white">Add a new review</a> 
     <a href="index.php?controller=reviewer&amp;action=registrationform"  class="w3-bar-item w3-button w3-hover-white">Register</a> 
-    <a href="index.php?controller=login&amp;action=login" class="w3-bar-item w3-button w3-hover-white">Log in</a>
+    <?php if ($loggedin): ?>
+      <a href="index.php?controller=login&amp;action=logout" class="w3-bar-item w3-button w3-hover-white">Log out</a>
+    <?php else: ?>
+      <a href="index.php?controller=login&amp;action=login" class="w3-bar-item w3-button w3-hover-white">Log in</a>
+    <?php endif;?>
+    </ul>
   </div>
 </nav>
 
@@ -42,7 +47,7 @@
 </div>
 
 <!-- W3.CSS Container -->
-<!-- <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div> -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
 
 </body>
 </html>

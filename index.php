@@ -45,6 +45,7 @@ try {
     }
 
     $title = $page['title'];
+    $loggedin = $authentication->isLoggedIn();
     $variables = $page['variables'] ?? [];
     $output = loadTemplate($page['template'], $variables);
 }
