@@ -34,9 +34,11 @@
 <?php endif; ?>
 
 <?php for ($i = 1; $i <= $pages; $i++): ?>
-        <a class="<?= $pagination->is_active_class($i) ?>" href="index.php?controller=film&action=list&page=<?= $i ?>">
-                <?= $i ?>
-        </a>
+        <?php if($pagination->is_showable($i)):?>
+                <a class="<?= $pagination->is_active_class($i) ?>" href="index.php?controller=film&action=list&page=<?= $i ?>">
+                        <?= $i ?>
+                </a>
+        <?php endif; ?>
 <?php endfor; ?>
 
 <?php if ($pagination->current_page() < $pagination->get_pagination_number()): ?>

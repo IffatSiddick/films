@@ -62,5 +62,14 @@
     public function get_pagination_number(){
         return max(1, ceil($this->total_records / $this->limit));
     }
+
+    public function is_showable($num){
+        if($this->get_pagination_number() < 4 || $this->current_page() == $num) {
+            return true;
+        }
+        if( ($this->current_page() - 2) <= $num && ($this->current_page() + 2) >= $num) {
+            return true;
+        }
+    }
 }
 ?>
