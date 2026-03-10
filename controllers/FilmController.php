@@ -79,9 +79,11 @@ class FilmController {
         }
         else {
             if (isset($_POST['film'])){
+                $reviewer = $this->authentication->getUser();
+
                 $film = $_POST['film'];
                 $film['date'] = date('Y-m-d');
-                $joke['reviewerId'] = $reviewer['id'];
+                $film['reviewer_id'] = $reviewer[0]['id'];
 
                 $this->FilmTable->save($film); 
 
