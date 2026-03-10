@@ -1,3 +1,13 @@
+<head>
+        <style type="text/css">
+                .active{
+                background: rgb(241, 161, 12);
+                color: white;
+                }
+        </style>
+</head>
+
+<!-- Total film reviews -->
 <p><?=$totalFilms?> film reviews have been submitted</p>
 
 <!-- Search bar-->
@@ -18,12 +28,13 @@
         <?php endif; ?>
 </form>
 
+<!-- Pagination -->
 <?php if ($pagination->current_page() > 1): ?>
         <a href="index.php?controller=film&action=list&page=<?= $pagination->prev_page()?>"> Previous page </a>
 <?php endif; ?>
 
 <?php for ($i = 1; $i <= $pages; $i++): ?>
-        <a href="index.php?controller=film&action=list&page=<?= $i ?>">
+        <a class="<?= $pagination->is_active_class($i) ?>" href="index.php?controller=film&action=list&page=<?= $i ?>">
                 <?= $i ?>
         </a>
 <?php endfor; ?>
@@ -32,6 +43,7 @@
         <a href="index.php?controller=film&action=list&page=<?= $pagination->next_page()?>"> Next page </a>
 <?php endif; ?>
 
+<!-- film review list -->
 <?php
 foreach($films as $film): ?>
         <blockquote>
