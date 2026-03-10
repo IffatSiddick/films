@@ -1,14 +1,6 @@
-<head>
-        <style type="text/css">
-                .active{
-                        background: rgb(255, 157, 11);
-                        color: white;
-                }
-        </style>
-</head>
-
 <p><?=$totalFilms?> film reviews have been submitted</p>
 
+<!-- Search bar-->
 <form method="get" class="search-bar">
         <input type="hidden" name="controller" value="film">
         <input type="hidden" name="action" value="list">
@@ -26,19 +18,14 @@
         <?php endif; ?>
 </form>
 
-<?php if ($pagination->current_page() > 1): ?>
-        <a href="index.php?controller=film&action=list&page=<?= $pagination->prev_page()?>"> Previous page </a>
-<?php endif; ?>
+<a href="index.php?controller=film&action=list&page=<?= $pagination->prev_page()?>"> Previous page </a>
+        <?php for ($i = 1; $i <= $pages; $i++): ?>
+                <a href="index.php?controller=film&action=list&page=<?= $i ?>">
+                        <?= $i ?>
+                </a>
+        <?php endfor; ?>
+<a href="index.php?controller=film&action=list&page=<?= $pagination->next_page()?>"> Next page </a>
 
-<?php for ($i = 1; $i <= $pages; $i++): ?>
-    <a class="<?= $pagination->is_active_class($i) ?>" href="index.php?controller=film&action=list&page=<?= $i ?>">
-        <?= $i ?>
-    </a>
-<?php endfor; ?>
-
-<?php if ($pagination->current_page() < $pagination->get_pagination_number()): ?>
-        <a href="index.php?controller=film&action=list&page=<?= $pagination->next_page()?>"> Next page </a>
-<?php endif; ?>
 
 <?php
 foreach($films as $film): ?>
@@ -48,15 +35,13 @@ foreach($films as $film): ?>
 
                 (by <a href="mailto:<?=htmlspecialchars($film['email'], ENT_QUOTES, 'UTF-8' );?>">
                 <?=htmlspecialchars($film['name'], ENT_QUOTES, 'UTF-8'); ?></a>)
-                
-                <?php if (empty($film) || $userID == $film['reviewer']): ?>
+
                 <a href="index.php?action=edit&id=<?=$film['id']?>">Edit</a>
 
                 <form action="index.php?action=delete" method="post">
                         <input type="hidden" name="id" value="<?=$film['id']?>">
                         <input type="submit" value="Delete">
                 </form>
-                <?php endif; ?>
         </blockquote>
 <?php endforeach;?>
 
