@@ -21,7 +21,7 @@ class FilmController {
         $pages  = $pagination->get_pagination_number();
 
         if (!empty($search)) {
-            $films = $this->FilmTable->searchRecipes($search);
+            $films = $this->FilmTable->searchReviews($search);
         } 
         else {
             $films = [];

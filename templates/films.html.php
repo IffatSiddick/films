@@ -29,6 +29,8 @@
 </form>
 
 <!-- Pagination -->
+<a href="index.php?controller=film&action=list&page=1"> Page 1 </a>
+
 <?php if ($pagination->current_page() > 1): ?>
         <a href="index.php?controller=film&action=list&page=<?= $pagination->prev_page()?>"> Previous page </a>
 <?php endif; ?>
@@ -44,6 +46,8 @@
 <?php if ($pagination->current_page() < $pagination->get_pagination_number()): ?>
         <a href="index.php?controller=film&action=list&page=<?= $pagination->next_page()?>"> Next page </a>
 <?php endif; ?>
+
+<a href="index.php?controller=film&action=list&page=<?= $pages?>"> Page <?= $pages?> </a>
 
 <!-- film review list -->
 <?php

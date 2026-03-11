@@ -32,7 +32,6 @@ class ReviewerController {
             if (count($this->reviewerTable->find('email', $reviewer['email'])) > 0) {
                 $errors[] = "This email has already been registered";
             }
-            # check for password length - must be > 12 characters
             else {
                 $reviewer['email'] = strtolower($reviewer['email']);
             }
@@ -66,6 +65,13 @@ class ReviewerController {
         return [
             'template' => 'registerSuccess.html.php',
             'title' => 'Registration successful!'
+        ];
+    }
+
+    public function changedetails() {
+        return [
+            'template' => 'userprofile.html.php',
+            'title' => 'User profile'
         ];
     }
 }
