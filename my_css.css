@@ -1,0 +1,103 @@
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 200px;
+  color: white;
+  background-color: #DA3125;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar-title {
+    padding: 16px;
+    left: 16;
+    margin: 0;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: rgb(255, 255, 255);
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #ffffff;
+  color: #DA3125;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: rgb(252, 252, 252);
+  color: #DA3125
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar-title {text-align: center;}
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+html,body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}html{overflow-x:hidden}
+
+h1 {
+  font-size:36px
+}
+
+h2 {
+  font-size:30px
+}
+  
+h3 {
+  font-size:24px
+}
+
+h4 {
+  font-size:20px
+}
+  
+h5 {
+  font-size:18px
+} 
+
+h6 {
+  font-size:16px 
+}
+
+.w3-serif {
+  font-family:serif
+}
+
+.w3-sans-serif {
+  font-family:sans-serif
+}
+
+.w3-cursive{font-family:cursive}.w3-monospace{font-family:monospace}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
