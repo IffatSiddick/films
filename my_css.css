@@ -6,7 +6,7 @@
   left: 0;
   width: 200px;
   color: white;
-  background-color: #DA3125;
+  background-color: #500349;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -29,14 +29,16 @@
 /* Active/current link */
 .sidebar a.active {
   background-color: #ffffff;
-  color: #DA3125;
+  color: #500349 ;
 }
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
   background-color: rgb(252, 252, 252);
-  color: #DA3125
+  color: #500349
 }
+
+/* 500349
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
@@ -82,14 +84,14 @@ div.content {
   font-size: 20px; 
   line-height: 1.5;
   display: inline-block;
-  border: 1px solid #3538c2;
+  border: 1px solid #53094d;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .responsive-form input[type=submit] {
   width: 100%;
-  background-color: #DA3125;
+  background-color: #86187dc2;
   color: white;
   font-family: Tahoma, Verdana, sans-serif; 
   font-size: 20px; 
@@ -98,22 +100,21 @@ div.content {
   margin: 8px 0;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 .responsive-form input[type=submit]:hover {
-  background-color: #a52319;
+  background-color: #86187d;
 }
 
 .responsive-form h1{
-  color: #DA3125;
+  color: #86187dc2;
 }
 
 .search-bar input[type="text"] {
     width: 400px;          
     padding: 12px 16px;    
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #dfcde2;
     border-radius: 4px;
 }
 
@@ -145,15 +146,43 @@ div.content {
 
 /* Active/current page */
 .pagination a.active {
-    background-color: #f0a500;
-    border-color: #f0a500;
+    background-color: #86187dc2;
+    border-color: #86187dc2;
     color: white;
     font-weight: bold;
 }
 
 /* Hover effect */
 .pagination a:hover:not(.active) {
-    background-color: #f0a4006c;
+    background-color: #e295d54d;
+}
+
+.film-review {
+    align-items: center;
+    list-style: none;
+    margin:  0;
+    padding: 10px;
+    border: 1px solid #e7e1e1;
+    border-radius: 6px;
+    background-color: rgb(241, 237, 237);
+}
+
+.film-review input[type=submit] {
+  width: 10%;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-family: Tahoma, Verdana, sans-serif; 
+  font-size: 15px; 
+  line-height: 1.5;
+  padding: 5px;
+  margin: 8px 0;
+  border: 1px solid #b3b0b0;
+  border-radius: 4px;
+}
+
+.film-review input[type=submit]:hover {
+  background-color: #86187dc2;
+  color:#ffffff
 }
 
 html, body {font-family: Tahoma, Verdana, sans-serif; font-size: 20px; line-height: 1.5}

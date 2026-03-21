@@ -15,5 +15,7 @@
                 <input type="submit" name="Add your film review" value="Save">
             </form>
         </div>
+    <?php  else: ?>
+        <p>You can only edit jokes that you own.</p>
     <?php endif;?>
 </div>

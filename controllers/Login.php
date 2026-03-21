@@ -14,7 +14,7 @@ class Login {
             $reviewer = $this->authentication->getUser();
             return ['template' => 'loginSuccess.html.php',
             'title' => 'Login successful',
-            'variables' => ['reviewer' => $reviewer[0]['name']]];
+            'variables' => ['reviewer' => $reviewer['name']]];
         }
         else {
             return ['template' => 'login.html.php',

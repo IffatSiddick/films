@@ -83,7 +83,7 @@ class FilmController {
 
                 $film = $_POST['film'];
                 $film['date'] = date('Y-m-d');
-                $film['reviewer_id'] = $reviewer[0]['id'];
+                $film['reviewer_id'] = $reviewer['id'];
 
                 $this->FilmTable->save($film); 
 
