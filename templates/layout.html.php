@@ -17,8 +17,8 @@
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-  <div class="w3-container">
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="background-color:#DA3125; color:#FAFAFA; z-index:3; width:300px; font-weight:bold;" id="mySidebar">
+    <div class="w3-container">
     <h3 class="w3-padding-64"><b>Film<br>Reviews</b></h3>
   </div>
   <div class="w3-bar-block">

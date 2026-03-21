@@ -14,11 +14,11 @@ class FilmController {
         include 'includes/DatabaseConnection.php';
         include 'classes/Pagination.php';
 
-        $search = $_GET['search'] ?? '';
-
         $pagination = new Pagination($pdo, 'film', 5);
         $result = $pagination->get_data();
         $pages  = $pagination->get_pagination_number();
+
+        $search = $_GET['search'] ?? '';
 
         if (!empty($search)) {
             $films = $this->FilmTable->searchReviews($search);
