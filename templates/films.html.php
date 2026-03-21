@@ -29,6 +29,7 @@
 </form>
 
 <!-- Pagination -->
+<div class = "pagination" >
 <a href="index.php?controller=film&action=list&page=1"> Page 1 </a>
 
 <?php if ($pagination->current_page() > 1): ?>
@@ -48,9 +49,11 @@
 <?php endif; ?>
 
 <a href="index.php?controller=film&action=list&page=<?= $pages?>"> Page <?= $pages?> </a>
+</div>
 
 <!-- film review list -->
 <?php
+<div class = "film-review">
 foreach($films as $film): ?>
         <blockquote>
                 <?=htmlspecialchars($film['title'], ENT_QUOTES,'UTF-8')?><br />    
@@ -67,6 +70,7 @@ foreach($films as $film): ?>
                 </form>
         </blockquote>
 <?php endforeach;?>
+</div>
 
 
 
