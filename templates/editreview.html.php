@@ -1,7 +1,7 @@
 <div class="responsive-form">
     <?php if (empty($film) || $userID == $reviewerID): ?>
         <div class="w3-container" id="contact" style="margin-top:75px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Leave a new film review below</b></h1>
+            <h1><b>Leave a new film review below</b></h1>
             
             <form action="" method="post">
                 <input type="hidden" name="film[id]" value="<?=$film['id'] ?? ''?>">
@@ -11,8 +11,8 @@
                 </div>
 
                 <label>Type your review here</label>
-                <textarea class="w3-input w3-border" name="film[review]" rows="3" cols="40"><?=htmlspecialchars($film['review']?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
-                <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Save</button>
+                <input class="w3-input w3-border" type="text" name="film[review]" value="<?=$film['review'] ?? ''?>">
+                <input type="submit" name="Add your film review" value="Save">
             </form>
         </div>
     <?php endif;?>

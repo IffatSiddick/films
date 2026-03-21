@@ -54,4 +54,4 @@ catch (PDOException $e) {
     $output= 'Database error: ' . $e->getMessage();
 }
 $action = $_GET['action'] ?? 'home';
-include 'templates/layout.html.php';
+include 'templates/my_layout.html.php';

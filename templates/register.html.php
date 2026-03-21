@@ -9,15 +9,18 @@
     </div>
 <?php endif; ?>
 
-<form action="index.php?controller=reviewer&action=regformsubmit" method="post">
-    <label for="name">Your name</label>
-    <input name="reviewer[name]" id="name" type="text" value="<?=$reviewer['name'] ?? '' ?>">
+<div class="responsive-form">
+    <h1>Register here</h1>
+    <form action="index.php?controller=reviewer&action=regformsubmit" method="post">
+        <label for="name">Your name</label>
+        <input name="reviewer[name]" id="name" type="text" value="<?=$reviewer['name'] ?? '' ?>">
 
-    <label for="email">Your email</label>
-    <input name="reviewer[email]" id="email" type="text" value="<?=$reviewer['email'] ?? '' ?>">
+        <label for="email">Your email</label>
+        <input name="reviewer[email]" id="email" type="text" value="<?=$reviewer['email'] ?? '' ?>">
 
-    <label for="password">Your password</label>
-    <input name="reviewer[password]" id="password" type="password" value="<?=$reviewer['password'] ?? '' ?>">
+        <label for="password">Your password</label>
+        <input name="reviewer[password]" id="password" type="password" value="<?=$reviewer['password'] ?? '' ?>">
 
-    <input type="submit" name="submit" value="Register account">
-</form>
+        <input type="submit" name="submit" value="Register account">
+    </form>
+</div>
