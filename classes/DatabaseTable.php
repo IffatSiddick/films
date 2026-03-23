@@ -12,7 +12,7 @@ class DatabaseTable {
 
     public function allfilms(){
         # need to add film review date
-        $stmt = $this->pdo->prepare('SELECT `film.id`, `title`, `date`, `review`, `reviewer_id`, `email` FROM `film`
+        $stmt = $this->pdo->prepare('SELECT `film.id`, `title`, `date`, `review`, `image, `reviewer_id`, `email` FROM `film`
         INNER JOIN `reviewer` ON `reviewerid` = reviewer.id');
 
         $stmt->execute();
@@ -104,7 +104,7 @@ class DatabaseTable {
 
     function searchReviews(string $search): array {
         $sql = '
-            SELECT film.id, film.title, film.review, film.date, reviewer_id, reviewer.name, reviewer.email
+            SELECT film.id, film.title, film.review, film.date, film.image, reviewer_id, reviewer.name, reviewer.email
             FROM film
             INNER JOIN reviewer ON film.reviewer_id = reviewer.id
             WHERE film.title LIKE :term

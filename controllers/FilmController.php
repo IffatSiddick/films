@@ -35,7 +35,8 @@ class FilmController {
                     'date' => $film['date'],
                     'name' => $reviewer['name'],
                     'email' => $reviewer['email'],
-                    'reviewer' => $reviewer['id']
+                    'reviewer' => $reviewer['id'],
+                    'image' => $film['image']
                 ];
             }
         }
@@ -84,6 +85,9 @@ class FilmController {
                 $film = $_POST['film'];
                 $film['date'] = date('Y-m-d');
                 $film['reviewer_id'] = $reviewer['id'];
+                $film['image'] = $_FILES["fileToUpload"]["name"];
+
+                include 'includes/upload_img.php';
 
                 $this->FilmTable->save($film); 
 
