@@ -14,7 +14,6 @@
             <a href="index.php?controller=film&amp;action=list"  class="w3-bar-item w3-button w3-hover-white <?= ($action == 'list') ? 'active' : '' ?>">Review list</a> 
             <a href="index.php?controller=film&amp;action=edit"  class="w3-bar-item w3-button w3-hover-white <?= ($action == 'edit') ? 'active' : '' ?>">Add a new review</a> 
             <?php if ($loggedin): ?>
-                <a href="index.php?controller=reviewer&amp;action=changedetails"  class="w3-bar-item w3-button w3-hover-white <?= ($action == 'changedetails') ? 'active' : '' ?>">User profile</a> 
                 <a href="index.php?controller=login&amp;action=logout" class="w3-bar-item w3-button w3-hover-white <?= ($action == 'home') ? 'logout' : '' ?>">Log out</a>
             <?php else: ?>
                 <a href="index.php?controller=reviewer&amp;action=registrationform"  class="w3-bar-item w3-button w3-hover-white <?= ($action == 'registrationform') ? 'active' : '' ?>">Register</a> 

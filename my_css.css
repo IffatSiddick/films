@@ -121,7 +121,11 @@ div.content {
 .search-bar button {
     padding: 12px 16px;
     font-size: 1rem;
-    cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #8b79887a;
+
 }
 
 .pagination {
